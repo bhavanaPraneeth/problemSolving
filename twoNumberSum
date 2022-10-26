@@ -1,0 +1,14 @@
+import java.util.*;
+
+class Program {
+  public static int[] twoNumberSum(int[] array, int targetSum) {
+    // Write your code here.
+		Set<Integer> countSet = new HashSet<>();
+		for(int i=0;i<array.length;i++){
+			if(countSet.contains(targetSum-array[i]))
+				return new int[] {targetSum-array[i],array[i]};
+			countSet.add(array[i]);
+		}
+    return new int[0];
+  }
+}
