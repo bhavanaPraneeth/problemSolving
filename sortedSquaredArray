@@ -1,0 +1,42 @@
+import java.util.*;
+
+class Program {
+
+  public int[] sortedSquaredArray(int[] array) {
+    int[] sortedSquareArray = new int[array.length];
+    int smallValueIdx = 0;
+    int largeValueIdx = array.length-1;
+    for(int i=array.length-1;i>=0;i--){
+      int smallValue = array[smallValueIdx];
+        int largeValue = array[largeValueIdx];
+      if(Math.abs(smallValue) > Math.abs(largeValue)){
+        sortedSquareArray[i] = smallValue*smallValue;
+        smallValueIdx++;
+      }
+      else{
+        sortedSquareArray[i] = largeValue*largeValue;
+        largeValueIdx--;
+      }
+      
+    }
+    return sortedSquareArray;
+    
+  }
+}
+// This file is initialized with a code version of this
+// question's sample test case. Feel free to add, edit,
+// or remove test cases in this file as you see fit!
+
+import java.util.*;
+
+class ProgramTest {
+  @Test
+  public void TestCase1() {
+    var input = new int[] {1, 2, 3, 5, 6, 8, 9};
+    var expected = new int[] {1, 4, 9, 25, 36, 64, 81};
+    var actual = new Program().sortedSquaredArray(input);
+    for (int i = 0; i < expected.length; i++) {
+      Utils.assertTrue(expected[i] == actual[i]);
+    }
+  }
+}
