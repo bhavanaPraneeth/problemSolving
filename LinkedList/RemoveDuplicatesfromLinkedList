@@ -1,0 +1,30 @@
+import java.util.*;
+
+class Program {
+  // This is an input class. Do not edit.
+  public static class LinkedList {
+    public int value;
+    public LinkedList next;
+
+    public LinkedList(int value) {
+      this.value = value;
+      this.next = null;
+    }
+  }
+
+  public LinkedList removeDuplicatesFromLinkedList(LinkedList linkedList) {
+    // Write your code here.
+    LinkedList current_node = linkedList;
+    LinkedList next_node ;
+    while(current_node.next!=null){
+      next_node = current_node.next;
+     if(current_node.value == next_node.value){
+       current_node.next = next_node.next;
+     }
+      else{
+        current_node = current_node.next;
+      }
+    }
+    return linkedList;
+  }
+}
