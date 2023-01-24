@@ -2,6 +2,11 @@
 //Linked List 1 - 2->4->9->7
 //Linked List 2 = 9->4->5
 //result = 1->9->2->2
+
+//O(max(n,m)) - time complexity
+//O(max(n,m)) - space complexity
+
+
 import java.util.*;
 
 class Program {
