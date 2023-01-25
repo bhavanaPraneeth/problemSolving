@@ -1,0 +1,38 @@
+//Hard - Find Loop
+//i/p - 0->1->2->3->4->5->6
+//                 |      |
+//                  9<-8<-7
+//O/p - 4->5->6
+//     |      |
+//      9<-8<-7
+
+//Time - O(n)
+//space  - O(n)
+import java.util.*;
+
+class Program {
+  public static LinkedList findLoop(LinkedList head) {
+    // Write your code here.
+    LinkedList firstPointer = head.next;
+    LinkedList secondPointer = head.next.next;
+    while(firstPointer != secondPointer){
+      firstPointer = firstPointer.next;
+      secondPointer = secondPointer.next.next;
+    }
+    firstPointer = head;
+    while(firstPointer != secondPointer){
+      firstPointer = firstPointer.next;
+      secondPointer = secondPointer.next;
+    }
+    return firstPointer;
+  }
+
+  static class LinkedList {
+    int value;
+    LinkedList next = null;
+
+    public LinkedList(int value) {
+      this.value = value;
+    }
+  }
+}
