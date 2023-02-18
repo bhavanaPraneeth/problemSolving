@@ -1,0 +1,43 @@
+//Balanced => same no. of opening brackets of certain type = same no. of closing brackets of that type
+// ([])(){}(())()() - true
+// ({]) -false
+// )([()] -false
+//overlap of diff. type of brackets is not allowed & closing bracket should not be ahead of opening bracket
+
+//Time complexity = O(n)
+//space complexity = O(n) worst case when string has all either opening brackets and imbalanced or opening brackets @ staring of string & closing brackets @end of string
+
+import java.util.*;
+
+class Program {
+  public static boolean balancedBrackets(String str) {
+    // Write your code here.
+    Map<Character,Character> brackets = new HashMap<>();
+    brackets.put('}','{');
+    brackets.put(')','(');
+    brackets.put(']','[');
+    List<Character> paranthesisStack = new ArrayList<Character>();
+    for(int i=0;i<str.length();i++)
+      {
+        char c = str.charAt(i);
+       if(c=='{' || c=='[' || c=='('){
+         paranthesisStack.add(c);
+       }
+       else if(c == ']' || c== ')' || c=='}'){
+         if(!(paranthesisStack.size() == 0) && brackets.get(c) == paranthesisStack.get(paranthesisStack.size()-1))
+             paranthesisStack.remove(paranthesisStack.size()-1);
+         else
+           return false;
+         
+       }
+         
+        
+      
+        
+          
+      }
+      
+    
+    return paranthesisStack.size() == 0; 
+  }
+}
