@@ -1,0 +1,41 @@
+//input = array of building height & string direction = "EAST" || "WEST"
+//if direction = EAST buildings are facing right in context of array
+//if direction = WEST buildings are facing left in context of array
+//a building can see sunset if it is higher than next building in its direction
+// output returns indices of buildings that can see sunset in sorted order
+//eg: [3,5,4,4,3,1,3,2] direction ="EAST"  output = [1,3,6,7]
+//if direction = "WEST" output =[0,1]
+
+//Time =O(n)
+//space =O(n) - output to be stored and sorted
+
+import java.util.*;
+
+class Program {
+
+  public ArrayList<Integer> sunsetViews(int[] buildings, String direction) {
+    ArrayList<Integer> buildingIndices = new ArrayList<>();
+    int max_height = 0;
+    int startIndex = 0;
+    int step;
+    if(direction.equals("EAST")){
+      startIndex = buildings.length -1;
+      step = -1;
+    }
+    else{
+      startIndex = 0;
+      step = 1;
+    }
+    while(startIndex>=0 && startIndex<buildings.length){
+      if(buildings[startIndex]>max_height){
+        buildingIndices.add(startIndex);
+        max_height = buildings[startIndex];
+      }
+      startIndex+=step;
+    }
+       // Write your code here.
+    if(direction.equals("EAST"))
+      Collections.reverse(buildingIndices);
+    return buildingIndices;
+  }
+}
